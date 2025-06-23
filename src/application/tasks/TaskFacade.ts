@@ -8,12 +8,16 @@ export class TaskFacade {
         private readonly repository: InMemoryTaskRepository
     ) { }
 
+    private handleError(operation: string, error: unknown): never {
+        throw new Error(`Error ${operation}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+    }
+
     createTask = async (title: string, description: string): Promise<Task> => {
         try {
             const task = this.factory.create(title, description);
             return await this.repository.save(task);
         } catch (error) {
-            throw new Error(`Error creating task: ${error instanceof Error ? error.message : 'Unknown error'}`);
+            this.handleError('creating task', error);
         }
     }
 
@@ -21,7 +25,7 @@ export class TaskFacade {
         try {
             return await this.repository.findAll();
         } catch (error) {
-            throw new Error(`Error retrieving all tasks: ${error instanceof Error ? error.message : 'Unknown error'}`);
+            this.handleError('retrieving all tasks', error);
         }
     }
 
@@ -29,7 +33,7 @@ export class TaskFacade {
         try {
             return await this.repository.findById(id);
         } catch (error) {
-            throw new Error(`Error finding task by ID: ${error instanceof Error ? error.message : 'Unknown error'}`);
+            this.handleError('finding task by ID', error);
         }
     }
 
@@ -50,7 +54,7 @@ export class TaskFacade {
             const updatedTask = await this.repository.update(taskCopy);
             return updatedTask;
         } catch (error) {
-            throw new Error(`Error updating task: ${error instanceof Error ? error.message : 'Unknown error'}`);
+            this.handleError('updating task', error);
         }
     }
 
@@ -58,7 +62,7 @@ export class TaskFacade {
         try {
             return await this.repository.deleteById(id);
         } catch (error) {
-            throw new Error(`Error deleting task: ${error instanceof Error ? error.message : 'Unknown error'}`);
+            this.handleError('deleting task', error);
         }
     }
 }
