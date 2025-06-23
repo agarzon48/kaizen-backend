@@ -1,6 +1,6 @@
 import { Task } from "../../domain/tasks/Task";
 import { TaskFactory } from "../../domain/tasks/TaskFactory";
-import { InMemoryTaskRepository } from "../../infraestructure/persistence/InMemoryTaskRepository";
+import { InMemoryTaskRepository } from "../../infrastructure/persistence/InMemoryTaskRepository";
 
 export class TaskFacade {
     constructor(

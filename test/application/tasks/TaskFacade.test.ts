@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from 'node:assert';
 
 import { TaskFactory } from "../../../src/domain/tasks/TaskFactory";
-import { InMemoryTaskRepository } from "../../../src/infraestructure/persistence/InMemoryTaskRepository";
+import { InMemoryTaskRepository } from "../../../src/infrastructure/persistence/InMemoryTaskRepository";
 import { TaskFacade } from "../../../src/application/tasks/TaskFacade";
 
 test('TaskFacade: should create a task and retrieve it', async () => {

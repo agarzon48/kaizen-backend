@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from 'node:assert';
 
-import { InMemoryTaskRepository } from "../../../src/infraestructure/persistence/InMemoryTaskRepository";
+import { InMemoryTaskRepository } from "../../../src/infrastructure/persistence/InMemoryTaskRepository";
 
 test('InMemoryTaskRepository: should save and retrieve tasks', async () => {
     const repository = new InMemoryTaskRepository();
