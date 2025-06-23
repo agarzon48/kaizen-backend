@@ -3,7 +3,7 @@ import assert from 'node:assert';
 
 import { Task } from "../../../src/domain/tasks/Task";
 
-test('Task: when provided with valid data, constructor set fields propperly', () => {
+test('Task: when provided with valid data, constructor set fields properly', () => {
     const now = new Date();
     const task = new Task('1', 'Test Task', 'This is a test task', now);
 
